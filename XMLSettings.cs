@@ -9,7 +9,7 @@ namespace JNSoundboard
 {
     public class XMLSettings
     {
-        readonly static SoundboardSettings DEFAULT_SOUNDBOARD_SETTINGS = new SoundboardSettings(new Keys[] { }, new LoadXMLFile[] { new LoadXMLFile(new Keys[] { }, "") }, true, "", "");
+        readonly static SoundboardSettings DEFAULT_SOUNDBOARD_SETTINGS = new SoundboardSettings(new Keys[] { }, new LoadXMLFile[] { new LoadXMLFile(new Keys[] { }, "") }, true, "", "", "");
 
         internal static SoundboardSettings soundboardSettings = new SoundboardSettings();
 
@@ -66,17 +66,18 @@ namespace JNSoundboard
             public Keys[] StopSoundKeys;
             public LoadXMLFile[] LoadXMLFiles;
             public bool MinimizeToTray;
-            public string LastPlaybackDevice, LastLoopbackDevice;
+            public string LastPlaybackDevice, LastLoopbackDevice, LastPlaybackSecond;
 
             public SoundboardSettings() { }
 
-            public SoundboardSettings(Keys[] stopSoundKeys, LoadXMLFile[] loadXMLFiles, bool minimizeToTray, string lastPlaybackDevice, string lastLoopbackDevice)
+            public SoundboardSettings(Keys[] stopSoundKeys, LoadXMLFile[] loadXMLFiles, bool minimizeToTray, string lastPlaybackDevice, string lastLoopbackDevice, string lastPlaybackSecond)
             {
                 StopSoundKeys = stopSoundKeys;
                 LoadXMLFiles = loadXMLFiles;
                 MinimizeToTray = minimizeToTray;
                 LastPlaybackDevice = lastPlaybackDevice;
                 LastLoopbackDevice = lastLoopbackDevice;
+                LastPlaybackSecond = lastPlaybackSecond;
             }
         }
         #endregion
@@ -164,6 +165,8 @@ namespace JNSoundboard
                 if (settings.LastPlaybackDevice == null) settings.LastPlaybackDevice = "";
 
                 if (settings.LastLoopbackDevice == null) settings.LastLoopbackDevice = "";
+
+                if (settings.LastPlaybackSecond == null) settings.LastPlaybackSecond = "";
 
                 soundboardSettings = settings;
             }

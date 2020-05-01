@@ -63,9 +63,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbPushToTalkKey = new System.Windows.Forms.TextBox();
             this.cbAudioDevices = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.cbPlaybackSecond = new System.Windows.Forms.ComboBox();
             this.pushToTalkKeyTimer = new System.Windows.Forms.Timer(this.components);
-            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbPushToTalk.SuspendLayout();
             this.cbAudioDevices.SuspendLayout();
@@ -260,6 +260,7 @@
             // 
             // checkForUpdateToolStripMenuItem
             // 
+            this.checkForUpdateToolStripMenuItem.Enabled = false;
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.checkForUpdateToolStripMenuItem.Text = "Check for update";
@@ -325,9 +326,9 @@
             this.gbPushToTalk.Controls.Add(this.label4);
             this.gbPushToTalk.Controls.Add(this.label3);
             this.gbPushToTalk.Controls.Add(this.tbPushToTalkKey);
-            this.gbPushToTalk.Location = new System.Drawing.Point(374, 382);
+            this.gbPushToTalk.Location = new System.Drawing.Point(374, 373);
             this.gbPushToTalk.Name = "gbPushToTalk";
-            this.gbPushToTalk.Size = new System.Drawing.Size(254, 94);
+            this.gbPushToTalk.Size = new System.Drawing.Size(254, 114);
             this.gbPushToTalk.TabIndex = 13;
             this.gbPushToTalk.TabStop = false;
             this.gbPushToTalk.Text = "Auto press push to talk key";
@@ -336,7 +337,7 @@
             // 
             this.btnReloadWindows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReloadWindows.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadWindows.Image")));
-            this.btnReloadWindows.Location = new System.Drawing.Point(226, 45);
+            this.btnReloadWindows.Location = new System.Drawing.Point(226, 65);
             this.btnReloadWindows.Name = "btnReloadWindows";
             this.btnReloadWindows.Size = new System.Drawing.Size(22, 22);
             this.btnReloadWindows.TabIndex = 15;
@@ -409,6 +410,16 @@
             this.cbAudioDevices.TabStop = false;
             this.cbAudioDevices.Text = "Audio devices";
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 85);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Second";
+            // 
             // cbPlaybackSecond
             // 
             this.cbPlaybackSecond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -422,16 +433,6 @@
             // pushToTalkKeyTimer
             // 
             this.pushToTalkKeyTimer.Tick += new System.EventHandler(this.pushToTalkKeyTimer_Tick);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 85);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Second";
             // 
             // MainForm
             // 

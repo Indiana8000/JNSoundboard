@@ -25,6 +25,8 @@ namespace JNSoundboard
 
         internal string xmlLoc = "";
 
+        AudioPlaybackEngine secondAudioPlaybackEngine = new AudioPlaybackEngine();
+
         public MainForm()
         {
             InitializeComponent();
@@ -39,15 +41,15 @@ namespace JNSoundboard
             XMLSettings.LoadSoundboardSettingsXML();
 
             if (cbPlaybackDevices.Items.Contains(XMLSettings.soundboardSettings.LastPlaybackDevice)) cbPlaybackDevices.SelectedItem = XMLSettings.soundboardSettings.LastPlaybackDevice;
-
             if (cbLoopbackDevices.Items.Contains(XMLSettings.soundboardSettings.LastLoopbackDevice)) cbLoopbackDevices.SelectedItem = XMLSettings.soundboardSettings.LastLoopbackDevice;
+            if (cbPlaybackSecond.Items.Contains(XMLSettings.soundboardSettings.LastPlaybackSecond)) cbPlaybackSecond.SelectedItem = XMLSettings.soundboardSettings.LastPlaybackSecond;
 
             //add events after settings have been loaded
             cbPlaybackDevices.SelectedIndexChanged += cbPlaybackDevices_SelectedIndexChanged;
             cbLoopbackDevices.SelectedIndexChanged += cbLoopbackDevices_SelectedIndexChanged;
+            cbPlaybackSecond.SelectedIndexChanged += cbPlaybackDevices_SelectedIndexChanged;
 
             initAudioPlaybackEngine();
-
             AudioPlaybackEngine.Instance.AllInputEnded += OnAllInputEnded;
         }
 
@@ -63,7 +65,6 @@ namespace JNSoundboard
         private void initAudioPlaybackEngine()
         {
             int deviceNumber = cbPlaybackDevices.SelectedIndex;
-
             try
             {
                 AudioPlaybackEngine.Instance.Init(deviceNumber);
@@ -77,18 +78,34 @@ namespace JNSoundboard
                 }
                 MessageBox.Show(msg);
             }
+
+            int secondDeviceNumber = cbPlaybackSecond.SelectedIndex;
+            try
+            {
+                if(secondDeviceNumber < cbPlaybackDevices.Items.Count)
+                {
+                    secondAudioPlaybackEngine.Init(secondDeviceNumber);
+                }
+            }
+            catch (NAudio.MmException ex)
+            {
+                SystemSounds.Beep.Play();
+                string msg = ex.ToString();
+                if (msg.Contains("AlreadyAllocated calling waveOutOpen"))
+                {
+                    msg = "Failed to open device. Already in exclusive use by another application? \n\n" + msg;
+                }
+                MessageBox.Show(msg);
+            }
         }
 
         private void loadWindows()
         {
             cbWindows.Items.Clear();
-
             cbWindows.Items.Add("[Any window]");
-
             cbWindows.SelectedIndex = 0;
 
             Process[] processlist = Process.GetProcesses();
-
             foreach (Process process in processlist)
             {
                 if (!string.IsNullOrEmpty(process.MainWindowTitle))
@@ -117,8 +134,6 @@ namespace JNSoundboard
             cbLoopbackDevices.Items.Clear();
             cbPlaybackSecond.Items.Clear();
 
-            cbLoopbackDevices.Items.Add("");
-
             foreach (var source in playbackSources)
             {
                 cbPlaybackDevices.Items.Add(source.ProductName);
@@ -128,15 +143,14 @@ namespace JNSoundboard
             if (cbPlaybackDevices.Items.Count > 0)
                 cbPlaybackDevices.SelectedIndex = 0;
 
-            cbPlaybackSecond.SelectedIndex = 0;
+            cbPlaybackSecond.Items.Add("");
+            cbPlaybackSecond.SelectedIndex = cbPlaybackSecond.Items.Count -1;
 
             cbLoopbackDevices.Items.Add("");
-
             foreach (var source in loopbackSources)
             {
                 cbLoopbackDevices.Items.Add(source.ProductName);
             }
-
             cbLoopbackDevices.SelectedIndex = 0;
         }
 
@@ -197,6 +211,7 @@ namespace JNSoundboard
         private void stopPlayback()
         {
             AudioPlaybackEngine.Instance.StopAllSounds();
+            secondAudioPlaybackEngine.StopAllSounds();
         }
 
         private void playSound(string file)
@@ -206,6 +221,11 @@ namespace JNSoundboard
             try
             {
                 AudioPlaybackEngine.Instance.PlaySound(file);
+                if(cbPlaybackSecond.SelectedIndex < cbPlaybackDevices.Items.Count 
+                    && cbPlaybackSecond.SelectedIndex != cbPlaybackDevices.SelectedIndex)
+                {
+                    secondAudioPlaybackEngine.PlaySound(file);
+                }
             }
             catch (FormatException ex)
             {
@@ -674,6 +694,9 @@ namespace JNSoundboard
             
             string deviceName = (string)cbPlaybackDevices.SelectedItem;
             XMLSettings.soundboardSettings.LastPlaybackDevice = deviceName;
+
+            string secondDeviceName = (string)cbPlaybackSecond.SelectedItem;
+            XMLSettings.soundboardSettings.LastPlaybackSecond = secondDeviceName;
 
             XMLSettings.SaveSoundboardSettingsXML();
         }
