@@ -384,7 +384,7 @@ namespace JNSoundboard
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (lvKeySounds.SelectedItems.Count > 0 && MessageBox.Show("Are you sure remove that item?", "Remove", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //if (lvKeySounds.SelectedItems.Count > 0 && MessageBox.Show("Are you sure remove that item?", "Remove", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 soundHotkeys.RemoveAt(lvKeySounds.SelectedIndices[0]);
                 lvKeySounds.Items.Remove(lvKeySounds.SelectedItems[0]);
@@ -795,6 +795,21 @@ namespace JNSoundboard
                     soundLocs[0] = file;
                     soundHotkeys.Add(new XMLSettings.SoundHotkey(new Keys[] { }, "", soundLocs));
                 }
+
+                //lvKeySounds.ListViewItemSorter = new ListViewItemComparer(0);
+                lvKeySounds.Sorting = SortOrder.Ascending;
+                lvKeySounds.Sort();
+
+                soundHotkeys.Sort(delegate (XMLSettings.SoundHotkey x, XMLSettings.SoundHotkey y)
+                {
+                    if (x.Keys == null && y.Keys == null) return 0;
+                    else if (x.Keys == null) return -1;
+                    else if (y.Keys == null) return 1;
+                    else return Helper.keysToString(x.Keys).CompareTo(Helper.keysToString(y.Keys));
+                });
+
+                chKeys.Width = -2;
+                chSoundLoc.Width = -2;
             }
         }
 
