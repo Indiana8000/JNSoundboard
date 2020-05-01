@@ -63,7 +63,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbPushToTalkKey = new System.Windows.Forms.TextBox();
             this.cbAudioDevices = new System.Windows.Forms.GroupBox();
+            this.cbPlaybackSecond = new System.Windows.Forms.ComboBox();
             this.pushToTalkKeyTimer = new System.Windows.Forms.Timer(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbPushToTalk.SuspendLayout();
             this.cbAudioDevices.SuspendLayout();
@@ -73,7 +75,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(5, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 5;
@@ -84,7 +86,7 @@
             this.cbPlaybackDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbPlaybackDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlaybackDevices.FormattingEnabled = true;
-            this.cbPlaybackDevices.Location = new System.Drawing.Point(72, 20);
+            this.cbPlaybackDevices.Location = new System.Drawing.Point(71, 27);
             this.cbPlaybackDevices.Name = "cbPlaybackDevices";
             this.cbPlaybackDevices.Size = new System.Drawing.Size(240, 21);
             this.cbPlaybackDevices.TabIndex = 10;
@@ -162,6 +164,7 @@
             this.chSoundLoc});
             this.lvKeySounds.FullRowSelect = true;
             this.lvKeySounds.GridLines = true;
+            this.lvKeySounds.HideSelection = false;
             this.lvKeySounds.Location = new System.Drawing.Point(12, 27);
             this.lvKeySounds.MultiSelect = false;
             this.lvKeySounds.Name = "lvKeySounds";
@@ -200,7 +203,7 @@
             // 
             this.btnReloadDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReloadDevices.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadDevices.Image")));
-            this.btnReloadDevices.Location = new System.Drawing.Point(318, 47);
+            this.btnReloadDevices.Location = new System.Drawing.Point(321, 54);
             this.btnReloadDevices.Name = "btnReloadDevices";
             this.btnReloadDevices.Size = new System.Drawing.Size(22, 22);
             this.btnReloadDevices.TabIndex = 12;
@@ -251,7 +254,7 @@
             // texttospeechToolStripMenuItem
             // 
             this.texttospeechToolStripMenuItem.Name = "texttospeechToolStripMenuItem";
-            this.texttospeechToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.texttospeechToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.texttospeechToolStripMenuItem.Text = "Text-to-speech";
             this.texttospeechToolStripMenuItem.Click += new System.EventHandler(this.texttospeechToolStripMenuItem_Click);
             // 
@@ -266,7 +269,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 50);
+            this.label2.Location = new System.Drawing.Point(5, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 18;
@@ -277,7 +280,7 @@
             this.cbLoopbackDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbLoopbackDevices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLoopbackDevices.FormattingEnabled = true;
-            this.cbLoopbackDevices.Location = new System.Drawing.Point(72, 47);
+            this.cbLoopbackDevices.Location = new System.Drawing.Point(71, 54);
             this.cbLoopbackDevices.Name = "cbLoopbackDevices";
             this.cbLoopbackDevices.Size = new System.Drawing.Size(240, 21);
             this.cbLoopbackDevices.TabIndex = 11;
@@ -322,7 +325,7 @@
             this.gbPushToTalk.Controls.Add(this.label4);
             this.gbPushToTalk.Controls.Add(this.label3);
             this.gbPushToTalk.Controls.Add(this.tbPushToTalkKey);
-            this.gbPushToTalk.Location = new System.Drawing.Point(372, 393);
+            this.gbPushToTalk.Location = new System.Drawing.Point(374, 382);
             this.gbPushToTalk.Name = "gbPushToTalk";
             this.gbPushToTalk.Size = new System.Drawing.Size(254, 94);
             this.gbPushToTalk.TabIndex = 13;
@@ -392,21 +395,43 @@
             // cbAudioDevices
             // 
             this.cbAudioDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbAudioDevices.Controls.Add(this.label5);
+            this.cbAudioDevices.Controls.Add(this.cbPlaybackSecond);
             this.cbAudioDevices.Controls.Add(this.label1);
             this.cbAudioDevices.Controls.Add(this.label2);
             this.cbAudioDevices.Controls.Add(this.cbPlaybackDevices);
             this.cbAudioDevices.Controls.Add(this.cbLoopbackDevices);
             this.cbAudioDevices.Controls.Add(this.btnReloadDevices);
-            this.cbAudioDevices.Location = new System.Drawing.Point(12, 413);
+            this.cbAudioDevices.Location = new System.Drawing.Point(12, 373);
             this.cbAudioDevices.Name = "cbAudioDevices";
-            this.cbAudioDevices.Size = new System.Drawing.Size(354, 74);
+            this.cbAudioDevices.Size = new System.Drawing.Size(354, 114);
             this.cbAudioDevices.TabIndex = 10;
             this.cbAudioDevices.TabStop = false;
             this.cbAudioDevices.Text = "Audio devices";
             // 
+            // cbPlaybackSecond
+            // 
+            this.cbPlaybackSecond.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbPlaybackSecond.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPlaybackSecond.FormattingEnabled = true;
+            this.cbPlaybackSecond.Location = new System.Drawing.Point(71, 81);
+            this.cbPlaybackSecond.Name = "cbPlaybackSecond";
+            this.cbPlaybackSecond.Size = new System.Drawing.Size(240, 21);
+            this.cbPlaybackSecond.TabIndex = 19;
+            // 
             // pushToTalkKeyTimer
             // 
             this.pushToTalkKeyTimer.Tick += new System.EventHandler(this.pushToTalkKeyTimer_Tick);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(5, 85);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Second";
             // 
             // MainForm
             // 
@@ -432,6 +457,7 @@
             this.MinimumSize = new System.Drawing.Size(610, 530);
             this.Name = "MainForm";
             this.Text = "JN Soundboard";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -480,6 +506,8 @@
         private System.Windows.Forms.Timer pushToTalkKeyTimer;
         internal System.Windows.Forms.ColumnHeader chWindow;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbPlaybackSecond;
+        private System.Windows.Forms.Label label5;
     }
 }
 

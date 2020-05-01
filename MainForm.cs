@@ -115,14 +115,20 @@ namespace JNSoundboard
 
             cbPlaybackDevices.Items.Clear();
             cbLoopbackDevices.Items.Clear();
+            cbPlaybackSecond.Items.Clear();
+
+            cbLoopbackDevices.Items.Add("");
 
             foreach (var source in playbackSources)
             {
                 cbPlaybackDevices.Items.Add(source.ProductName);
+                cbPlaybackSecond.Items.Add(source.ProductName);
             }
 
             if (cbPlaybackDevices.Items.Count > 0)
                 cbPlaybackDevices.SelectedIndex = 0;
+
+            cbPlaybackSecond.SelectedIndex = 0;
 
             cbLoopbackDevices.Items.Add("");
 
@@ -743,6 +749,11 @@ namespace JNSoundboard
         private void btnReloadWindows_Click(object sender, EventArgs e)
         {
             loadWindows();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
