@@ -440,7 +440,7 @@ namespace JNSoundboard
             {
                 XMLSettings.WriteXML(new XMLSettings.Settings() { SoundHotkeys = soundHotkeys.ToArray() }, xmlLoc);
 
-                MessageBox.Show("Saved");
+                //MessageBox.Show("Saved");
             }
         }
 
@@ -765,6 +765,35 @@ namespace JNSoundboard
                     cbEnablePushToTalk.Checked = false;
                     MessageBox.Show("There is no push to talk key entered");
                     return;
+                }
+            }
+        }
+
+        private void lvKeySounds_DragEnter(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop, false)==true)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+        }
+
+        private void lvKeySounds_DragDrop(object sender, DragEventArgs e)
+        {
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if (data != null)
+            {
+                var filenames = data as string[];
+                foreach(string file in filenames)
+                {
+                    var newItem = new ListViewItem("");
+                    newItem.SubItems.Add("");
+                    newItem.SubItems.Add(file);
+
+                    lvKeySounds.Items.Add(newItem);
+
+                    string[] soundLocs = new string[1];
+                    soundLocs[0] = file;
+                    soundHotkeys.Add(new XMLSettings.SoundHotkey(new Keys[] { }, "", soundLocs));
                 }
             }
         }

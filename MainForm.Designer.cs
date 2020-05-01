@@ -155,6 +155,7 @@
             // lvKeySounds
             // 
             this.lvKeySounds.Alignment = System.Windows.Forms.ListViewAlignment.Default;
+            this.lvKeySounds.AllowDrop = true;
             this.lvKeySounds.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -172,6 +173,8 @@
             this.lvKeySounds.TabIndex = 0;
             this.lvKeySounds.UseCompatibleStateImageBehavior = false;
             this.lvKeySounds.View = System.Windows.Forms.View.Details;
+            this.lvKeySounds.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvKeySounds_DragDrop);
+            this.lvKeySounds.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvKeySounds_DragEnter);
             this.lvKeySounds.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvKeySounds_MouseDoubleClick);
             // 
             // chKeys
@@ -436,6 +439,7 @@
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 499);
@@ -455,7 +459,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(610, 530);
+            this.MinimumSize = new System.Drawing.Size(654, 538);
             this.Name = "MainForm";
             this.Text = "JN Soundboard";
             this.Load += new System.EventHandler(this.MainForm_Load);
