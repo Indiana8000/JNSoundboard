@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -51,6 +52,33 @@ namespace JNSoundboard
 
             initAudioPlaybackEngine();
             AudioPlaybackEngine.Instance.AllInputEnded += OnAllInputEnded;
+        }
+
+        internal class ListViewItemComparer : IComparer
+        {
+            private int col;
+
+            public ListViewItemComparer()
+            {
+                col = 0;
+            }
+
+            public ListViewItemComparer(int column)
+            {
+                col = column;
+            }
+
+            public int Compare(object x, object y)
+            {
+                if(string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text) == 0)
+                {
+                    return string.Compare(((ListViewItem)x).SubItems[2].Text, ((ListViewItem)y).SubItems[2].Text);
+                }
+                else
+                {
+                    return string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
+                }
+            }
         }
 
         private void OnAllInputEnded(object sender, EventArgs e)
@@ -796,8 +824,7 @@ namespace JNSoundboard
                     soundHotkeys.Add(new XMLSettings.SoundHotkey(new Keys[] { }, "", soundLocs));
                 }
 
-                //lvKeySounds.ListViewItemSorter = new ListViewItemComparer(0);
-                lvKeySounds.Sorting = SortOrder.Ascending;
+                lvKeySounds.ListViewItemSorter = new ListViewItemComparer(0);
                 lvKeySounds.Sort();
 
                 soundHotkeys.Sort(delegate (XMLSettings.SoundHotkey x, XMLSettings.SoundHotkey y)
