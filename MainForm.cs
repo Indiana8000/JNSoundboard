@@ -70,14 +70,7 @@ namespace JNSoundboard
 
             public int Compare(object x, object y)
             {
-                if(string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text) == 0)
-                {
-                    return string.Compare(((ListViewItem)x).SubItems[2].Text, ((ListViewItem)y).SubItems[2].Text);
-                }
-                else
-                {
-                    return string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
-                }
+                return string.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
             }
         }
 
@@ -823,7 +816,7 @@ namespace JNSoundboard
                     soundLocs[0] = file;
                     soundHotkeys.Add(new XMLSettings.SoundHotkey(new Keys[] { }, "", soundLocs));
                 }
-
+                /*
                 lvKeySounds.ListViewItemSorter = new ListViewItemComparer(0);
                 lvKeySounds.Sort();
 
@@ -834,7 +827,7 @@ namespace JNSoundboard
                     else if (y.Keys == null) return 1;
                     else return Helper.keysToString(x.Keys).CompareTo(Helper.keysToString(y.Keys));
                 });
-
+                */
                 chKeys.Width = -2;
                 chSoundLoc.Width = -2;
             }
