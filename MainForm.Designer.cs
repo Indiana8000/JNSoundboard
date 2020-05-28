@@ -66,6 +66,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbPlaybackSecond = new System.Windows.Forms.ComboBox();
             this.pushToTalkKeyTimer = new System.Windows.Forms.Timer(this.components);
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbPushToTalk.SuspendLayout();
             this.cbAudioDevices.SuspendLayout();
@@ -437,12 +438,22 @@
             // 
             this.pushToTalkKeyTimer.Tick += new System.EventHandler(this.pushToTalkKeyTimer_Tick);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(511, 351);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Hot Keys";
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 499);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cbAudioDevices);
             this.Controls.Add(this.gbPushToTalk);
             this.Controls.Add(this.btnStopAllSounds);
@@ -513,6 +524,7 @@
         private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbPlaybackSecond;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
