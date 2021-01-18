@@ -209,7 +209,7 @@
             this.btnReloadDevices.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadDevices.Image")));
             this.btnReloadDevices.Location = new System.Drawing.Point(321, 54);
             this.btnReloadDevices.Name = "btnReloadDevices";
-            this.btnReloadDevices.Size = new System.Drawing.Size(22, 22);
+            this.btnReloadDevices.Size = new System.Drawing.Size(22, 21);
             this.btnReloadDevices.TabIndex = 12;
             this.btnReloadDevices.UseVisualStyleBackColor = true;
             this.btnReloadDevices.Click += new System.EventHandler(this.btnReloadDevices_Click);
@@ -341,9 +341,9 @@
             // 
             this.btnReloadWindows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnReloadWindows.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadWindows.Image")));
-            this.btnReloadWindows.Location = new System.Drawing.Point(226, 65);
+            this.btnReloadWindows.Location = new System.Drawing.Point(226, 54);
             this.btnReloadWindows.Name = "btnReloadWindows";
-            this.btnReloadWindows.Size = new System.Drawing.Size(22, 22);
+            this.btnReloadWindows.Size = new System.Drawing.Size(22, 21);
             this.btnReloadWindows.TabIndex = 15;
             this.btnReloadWindows.UseVisualStyleBackColor = true;
             this.btnReloadWindows.Click += new System.EventHandler(this.btnReloadWindows_Click);
@@ -351,7 +351,7 @@
             // cbEnablePushToTalk
             // 
             this.cbEnablePushToTalk.AutoSize = true;
-            this.cbEnablePushToTalk.Location = new System.Drawing.Point(10, 72);
+            this.cbEnablePushToTalk.Location = new System.Drawing.Point(59, 83);
             this.cbEnablePushToTalk.Name = "cbEnablePushToTalk";
             this.cbEnablePushToTalk.Size = new System.Drawing.Size(59, 17);
             this.cbEnablePushToTalk.TabIndex = 16;
@@ -364,7 +364,7 @@
             this.cbWindows.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbWindows.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbWindows.FormattingEnabled = true;
-            this.cbWindows.Location = new System.Drawing.Point(59, 45);
+            this.cbWindows.Location = new System.Drawing.Point(59, 54);
             this.cbWindows.Name = "cbWindows";
             this.cbWindows.Size = new System.Drawing.Size(161, 21);
             this.cbWindows.TabIndex = 14;
@@ -372,7 +372,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 48);
+            this.label4.Location = new System.Drawing.Point(5, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 2;
@@ -381,7 +381,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 22);
+            this.label3.Location = new System.Drawing.Point(5, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 1;
@@ -389,7 +389,7 @@
             // 
             // tbPushToTalkKey
             // 
-            this.tbPushToTalkKey.Location = new System.Drawing.Point(59, 19);
+            this.tbPushToTalkKey.Location = new System.Drawing.Point(59, 27);
             this.tbPushToTalkKey.Name = "tbPushToTalkKey";
             this.tbPushToTalkKey.ReadOnly = true;
             this.tbPushToTalkKey.Size = new System.Drawing.Size(161, 20);
@@ -440,6 +440,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(511, 351);
             this.label6.Name = "label6";
